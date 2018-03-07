@@ -1,0 +1,110 @@
+// Creating a function to determine if user correctly guessed
+// Will need to adjust this function (or create another) where the computer guess is a word not a letter and match a guess to the array
+function isPsychic (user, computer){
+
+    if(user===computer){
+        return "Win"
+    } else {
+        return "Incorrect"
+    }
+
+};
+
+// Function to determine if an input (user) is in an array (arr)
+function inArray(user, arr)
+{
+    var count=arr.length;
+    for(var i=0;i<count;i++)
+    {
+        if(arr[i]===user){return true;}
+    }
+    return false;
+}
+
+
+
+// Reset the funtion after a win/loss
+function reset (){
+    guessesLeft=10;
+    guessedLetters=[];
+    computerLetter = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+}
+
+// Creates an array for the computer choices - array of different words
+computerChoices = ["brockhampton", "drake", "amine", "migos","dram","russ","future","kendrick"];
+
+// Cretes an array for the user vailable options (entire alphabet - lowercase)
+userChoices = [];
+for (i=97;i<=122;i++){
+    userChoices[userChoices.length] = String.fromCharCode(i);
+};
+
+
+
+// Connect variables to HTML & starting position
+var wins = document.getElementById("wins");
+var losses = document.getElementById("losses");
+var guessesLeft = 9; 
+var guessedLetters = [];
+
+
+// Get computer's guess
+var computerLetter = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+// This function is run whenever the user presses a key.
+document.onkeyup = function (event) {
+    // Checking what the computer generated for testing purposes
+    console.log(computerLetter);
+    
+    // Determines which key was pressed.
+    var userGuess = event.key;
+    console.log(userGuess);
+    
+    // Checks if input is accpetable
+    var validLetter = inArray(userGuess, userChoices); 
+    console.log(validLetter);
+
+    // creating a "result" variable for the resilt of the isPsychic function
+    var result = isPsychic(userGuess, computerLetter);
+    console.log(result);
+
+    // Creating an "If" stmt to first check if valids input, and then if win/incorrect result
+    if(validLetter == true){
+        // Creating an "If" stmt to tell what to do for a win/incorrect result
+        if( result=="Win"){
+            // add a win into the log
+            wins++;
+            reset ();
+            
+        } else {
+            // reduce the guesses left 
+            guessesLeft--;
+            // record the guesses so far
+            guessedLetters.push(userGuess);
+        }
+        
+        if(guessesLeft==0) {
+            // add a loss into the log
+            losses++;
+            reset ()
+
+        } 
+        
+    } else {
+            alert("Invalid input! Please use the alphabet :)")
+
+    };  
+
+    // Changing HTML text
+    document.getElementById("wins").innerHTML = wins;
+    document.getElementById("losses").innerHTML = losses;
+    document.getElementById("remainingGuesses").innerHTML = guessesLeft;
+    document.getElementById("guessedLetters").innerHTML = guessedLetters;
+
+
+console.log(wins);
+console.log(losses);
+console.log(guessesLeft);
+console.log(guessedLetters);
+
+};
