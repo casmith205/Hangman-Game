@@ -19,6 +19,7 @@
     function reset (){
         guessesLeft=10;
         guessedLetters=[];
+        correctLetters=[];
         computerWord = computerChoices[Math.floor(Math.random() * computerChoices.length)];
         computerChar = computerWord.split("");
     };
@@ -33,15 +34,27 @@
          };
     };
 
+    // Replacing the "_" with the correctly guessed letters
     function correctArrayReplacement(arrKey, arrCorrect, guess){
         for(i=0; i<=arrKey.length; i++){
             if(arrKey[i]==guess){
-            arrCorrect.splice(i, 0, guess)
+            arrCorrect.splice(i, 1, guess)
             };
         }
         document.getElementById("current").innerHTML = arrCorrect;
-    }
+    };
+    
+    // Adding a comparison array
+    function comparison(arr1, arr2, newArr) {
+        for(i=0; i<arr1.length; i++){
+            newArr.splice(i, 1, (arr1[i]==arr2[i]));
+        }
+    
+    };
 
+    // Checking that the comparison array is all "true"
+
+    
 // DEFINING VARIABLES 
     // Connect variables to HTML & starting position
     var wins = document.getElementById("wins");
@@ -49,7 +62,7 @@
     var guessesLeft = 9; 
     var guessedLetters = [];
     var correctLetters = [];
-
+    var comparisonArray = [];
 
 
 // ARRAYS
@@ -69,9 +82,7 @@
     var computerChar = computerWord.split("");
     console.log(computerChar);
 
-document.onload = function (){
-    start(computerChar, correctLetters);
-};
+start(computerChar, correctLetters);
 
 // USER PRESSES A KEY...
 document.onkeyup = function (event) {
@@ -100,31 +111,30 @@ document.onkeyup = function (event) {
         if( correctLetterCheck==true){
             //Calls function to add in the correct location
             correctArrayReplacement(computerChar, correctLetters, userGuess);
+            
         } else {
             // reduce the guesses left 
             guessesLeft--;
             // record the guesses so far
             guessedLetters.push(userGuess);
-        }
+        };
         
         if(guessesLeft==0) {
             // add a loss into the log
             losses++;
             reset ()
-        }
+        };
         
-        if (repeatLetters="Repeat"){
-            if(correctLetters.length == (computerChar.length)-1) {
-                // add a win into the log
-                wins++;
-                reset ();
-            }
-        } else if(correctLetters.length == computerChar.length) {
-                // add a win into the log
-                wins++;
-                reset ();
-            }
+        comparison(computerChar, correctLetters, comparisonArray);
+        console.log(comparisonArray);
 
+        if()
+        // **** this isnt right
+            // add a win into the log
+            // wins++;
+            // reset ();
+    
+    
 
         
     } else {
