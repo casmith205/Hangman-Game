@@ -61,7 +61,6 @@
     var correctLetters = [];
     var comparisonArray = [];
 
-
 // ARRAYS
     // Creates an array for the computer choices - array of different words
     computerChoices = ["brockhampton", "drake", "amine", "migos","dram","russ","future","kendrick","kanye"];
@@ -129,8 +128,10 @@ document.onkeyup = function (event) {
 
         }else{
             wins++;
-            reset ();   
+            reset ();  
         };
+
+        
         
     } else {
         alert("Invalid input! Please use the alphabet :)")
