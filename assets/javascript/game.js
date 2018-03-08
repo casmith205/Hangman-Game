@@ -140,7 +140,7 @@ document.onkeyup = function (event) {
             alert("You got it! The answer was " +computerWord+ ". " +winMessage);
             reset ();
             start(computerChar, correctLetters); 
-        }
+        };
 
         
     // If the user does not enter a letter, alert them. 
