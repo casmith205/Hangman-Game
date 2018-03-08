@@ -124,9 +124,8 @@ document.onkeyup = function (event) {
         if(guessesLeft==0) {
             losses++;
             alert("Sorry, the correct answer was " +computerWord+ "!");
-            start(computerChar, correctLaetters);
             reset ();
-            
+            start(computerChar, correctLetters);
         };
         
         // Calling the comparison function to create a new T/F array
