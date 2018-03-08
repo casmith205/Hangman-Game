@@ -120,12 +120,14 @@ document.onkeyup = function (event) {
             losses++;
             alert("Sorry, the correct answer was " +computerWord+ "!");
             reset ();
-            start(computerChar, correctLetters);
+            start(computerChar, correctLaetters);
         };
         
+        // Calling the comparison function to create a new T/F array
         comparison(computerChar, correctLetters, comparisonArray);
         console.log(comparisonArray);
 
+        // If that comparison array has a false in it, do nothing. If there are no falses, you win.
         if(comparisonArray.includes(false)){
 
         }else{
@@ -133,10 +135,10 @@ document.onkeyup = function (event) {
             alert("You got it! The answer was " +computerWord+ ". You go Glen Coco.");
             reset ();
             start(computerChar, correctLetters); 
-        };
+        }
 
         
-        
+    // If the user does not enter a letter, alert them. 
     } else {
         alert("Invalid input! Please use the alphabet :)")
 
@@ -151,7 +153,7 @@ document.onkeyup = function (event) {
     document.getElementById("guessedLetters").innerHTML = guessedLetters;
     document.getElementById("current").innerHTML = correctLetters;
 
-
+// Console log to check
 console.log(wins);
 console.log(losses);
 console.log(guessesLeft);
