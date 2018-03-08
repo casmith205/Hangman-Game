@@ -63,7 +63,7 @@
 
 // ARRAYS
     // Creates an array for the computer choices - array of different words
-    computerChoices = ["brockhampton", "drake", "amine", "migos","dram","russ","future","kendrick","kanye"];
+    computerChoices = ["brockhampton", "drake", "lilxan","lilyachty","amine", "migos","dram","russ","future","kendrick","kanye"];
 
     // Cretes an array for the user vailable options (entire alphabet - lowercase)
     userChoices = [];
@@ -118,7 +118,8 @@ document.onkeyup = function (event) {
         if(guessesLeft==0) {
             // add a loss into the log
             losses++;
-            reset ()
+            reset ();
+            start(computerChar, correctLetters);
         };
         
         comparison(computerChar, correctLetters, comparisonArray);
@@ -128,7 +129,8 @@ document.onkeyup = function (event) {
 
         }else{
             wins++;
-            reset ();  
+            reset ();
+            start(computerChar, correctLetters); 
         };
 
         
