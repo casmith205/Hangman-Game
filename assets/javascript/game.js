@@ -52,9 +52,6 @@
     
     };
 
-    // Checking that the comparison array is all "true"
-
-    
 // DEFINING VARIABLES 
     // Connect variables to HTML & starting position
     var wins = document.getElementById("wins");
@@ -128,14 +125,12 @@ document.onkeyup = function (event) {
         comparison(computerChar, correctLetters, comparisonArray);
         console.log(comparisonArray);
 
-        if()
-        // **** this isnt right
-            // add a win into the log
-            // wins++;
-            // reset ();
-    
-    
+        if(comparisonArray.includes(false)){
 
+        }else{
+            wins++;
+            reset ();   
+        };
         
     } else {
             alert("Invalid input! Please use the alphabet :)")
