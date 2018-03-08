@@ -133,7 +133,7 @@ document.onkeyup = function (event) {
         };
         
     } else {
-            alert("Invalid input! Please use the alphabet :)")
+        alert("Invalid input! Please use the alphabet :)")
 
     };  
 
