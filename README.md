@@ -1,4 +1,4 @@
-# Train Scheduler
+# Hip-Hop Hangman
 
 ## About
 Think you know your hip hop artists? See if you can guess which one I'm thinking of!
